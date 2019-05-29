@@ -1,1 +1,77 @@
 @import 'modules/base';
+
+ul.tasks {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 0px;
+
+    li {
+        list-style: none
+    }
+}
+
+.task {
+    display: grid;
+    grid-gap: 1rem;
+    grid-auto-flow: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 22px;
+
+
+    &.true span {
+        text-decoration: line-through
+    }
+
+    &.false:before {
+        content: "🔄"
+
+    }
+
+    &.true:before {
+        content: "✅";
+    }
+
+    &:before,
+    &:after {
+        align-self: end;
+    }
+
+    &.checking span {
+        background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: hue 10s infinite linear;
+    }
+
+    &.removing span {
+        color: #ff0000;
+        animation: colorAnimRemoving 10s infinite linear;
+    }
+
+    &.editing input {
+        border: none;
+        background-color: #fbeb14;
+        border-bottom: 2px solid #a99c00;
+    }
+}
+
+@keyframes hue {
+    from {
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(-360deg);
+    }
+}
+
+@keyframes colorAnimRemoving {
+    from {
+        color: #ff0000;
+    }
+
+    to {
+        color: #ff4400;
+    }
+}
