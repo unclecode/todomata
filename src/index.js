@@ -1,11 +1,7 @@
 import 'normalize.css';
 import './styles/style.scss';
-
 import {
     App
-} from './modules/Appomata.js'
+} from 'Appomata'
 
-import todoMata from './automatas/todoMata'
-
-let todoApp = new App("todoApp");
-todoApp.run(todoMata, document.getElementById("todoApp"))
+console.log('hello world')
