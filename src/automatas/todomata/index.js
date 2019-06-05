@@ -4,7 +4,7 @@ import states from './states'
 import views from './views'
 
 let todomata = Appomata.createAutomata({
-    name: "todo",
+    name: "todoMata",
     context: {
         all: []
     },

@@ -3,12 +3,12 @@ import Appomata from 'Appomata'
 let editing = {
 	name : "editing",
 	actions: {
-		confirm: async (delta){
+		confirm: async (delta) => {
 			let {
 				input,
 				context,
 				buffer
-			}
+			} = delta;
 			let task = context.all[buffer.keys[input.task.id]];
 			let {title} = task;
 			Object.assign(task, {title})

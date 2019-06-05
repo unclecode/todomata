@@ -456,7 +456,7 @@ class State {
      * @param {Transition delta function contain action, input, from, FSA local context, and observed context} delta 
      */
     async transit(delta) {
-        return (this[delta.action] && await this[delta.action](delta)) || this.haltOnFailed()
+        return (this[delta.action] && await this[delta.action](delta)) || this.failed(delta)
     }
     failed(delta) {
         return Appomata.createOmega("failed", {
@@ -625,7 +625,7 @@ let App = (() => {
          * @param {Array|String} automata List of automata names that app instance connects, these automatas must be created already with Appomata
          * @param {DOM Element} rootElement DOM physical element
          */
-        run(automata, rootElement) {
+        run(automata, rootElement, action = "init") {
             this.mount(rootElement)
 
             Appomata.connect({
@@ -635,7 +635,7 @@ let App = (() => {
 
             return automata.transit({
                 input: "",
-                action: "init"
+                action
             })
         }
     }
