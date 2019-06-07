@@ -1,23 +1,41 @@
+import Appomata from 'Appomata'
 import {h} from 'virtual-dom'
-
 let Task = ({data, props, transit}) => {
+	let task = data
 	let sl = 'div.task.' + 
-	data.completed + '.' + 
-	data.status + 
-	'#task_' + data.id;
-	
-	return h(sl, {
-		key : data.id
+		task.completed + '.' + 
+		task.status + 
+		'#task_' + task.id;
+	let vNodes = h(sl, {
+		key : task.id
 	}, [
-			h('span', {}, [data.title]),
-			h('a', {href: '#'}, ['check']),
-			h('a', {href: '#'}, ['remove']),
-			h('a', {href: '#'}, ['edit'])
-		])
+		h('span', {}, [task.title]),
+		h('a', {
+			href: '#',
+			onclick: (e) => { 
+				transit(Appomata.createDelta("check", {task}))
+				return false;
+			}
+		}, ['check']),
+		h('a', {
+			href: '#',
+			onclick: (e) => { 
+				transit(Appomata.createDelta("remove", {task}))
+				return false;
+			}
+		}, ['remove']),
+		h('a', {
+			href: '#',
+			onclick: (e) => { 
+				transit(Appomata.createDelta("edit", {task}))
+				return false;
+
+		}
+		}, ['edit']),
+	])
+	vNodes.splice(1, task.completed ? 1 : 0)
+	return vNodes;
 }
-
-
-
 export {
-	Task
+Task
 };

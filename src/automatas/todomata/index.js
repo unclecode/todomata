@@ -16,11 +16,19 @@ let todomata = Appomata.createAutomata({
     } 
 })
 
+let stateViewMap = {
+	"IdleView": "idle",
+	"CheckingView": "checking",
+	"EditingView": "editing",
+	"RemovingView": "removing"
+}
+
 for (const state of states) {
     todomata.addState(state)
 }
+
 for (const view of views) {
-    todomata.addView(view)
+    todomata.addView(view, stateViewMap[view.name])
 }
 // move to first state
 todomata.init("init")

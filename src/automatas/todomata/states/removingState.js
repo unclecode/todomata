@@ -9,17 +9,19 @@ let removing = {
 				context,
 				buffer
 			} = delta
+			let ix = buffer.keys[input.task.id]
 			context.all.splice(buffer.keys[input.task.id], 1);
-			for(let i = buffer.keys[input.task.id]; i < context.all.length - 1; i++){
-				buffer.keys[i]--;
+			for(; ix < context.all.length - 1; ix++){
+				buffer.keys[ix]--;
 			}
 // 			context.all.forEach((t, order) => {
 // 				buffer.keys[t.id] = order;
 // 			})
 			return Appomata.createOmega(
 				"idle",
-				task
+				{tasks: context.all}
 			)
+
 		}
 		
 	}

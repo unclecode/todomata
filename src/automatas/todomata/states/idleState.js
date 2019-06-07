@@ -11,8 +11,9 @@ let idle = {
 			} = delta;
 			let task = context.all[buffer.keys[input.task.id]]
 			task.status = "checking"
-			return omega("checking", {
-				task: input.task
+			return Appomata.createOmega("checking", {
+				task: input.task,
+				tasks: context.all
 			})
 		},
 		remove : async (delta) => {
@@ -24,8 +25,9 @@ let idle = {
 			} = delta;
 			let task = context.all[buffer.keys[input.task.id]]
 			task.status = "removing"
-			return omega("removing", {
-				task: input.task
+			return Appomata.createOmega("removing", {
+				task: input.task,
+				tasks: context.all
 			})
 		},
 		create : async (delta) => {
@@ -37,8 +39,9 @@ let idle = {
 			} = delta;
 			let task = input.task
 			task.status = "creating"
-			return omega("creating", {
-				task
+			return Appomata.createOmega("creating", {
+				task: input.task,
+				tasks: context.all
 			})			
 		},
 		edit : async (delta) => {
@@ -50,8 +53,9 @@ let idle = {
 			} = delta;
 			let task = input.task
 			task.status = "editing"
-			return omega("editing", {
-				task
+			return Appomata.createOmega("editing", {
+				task: input.task,
+				tasks: context.all
 			})						
 		}
 	}

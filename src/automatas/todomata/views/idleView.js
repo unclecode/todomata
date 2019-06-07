@@ -2,8 +2,8 @@ import Appomata from 'Appomata'
 import {h} from 'virtual-dom'
 import {Task} from './common.js'
 
-let initView = {
-	name : "InitView",
+let idleView = {
+	name : "IdleView",
 	render: (state) => {
 		let {omega, transit} = state;
 		let tasks = omega.output.tasks;
@@ -14,5 +14,5 @@ let initView = {
 	}
 }
 
-export default Appomata.createView(initView);
+export default Appomata.createView(idleView);
 

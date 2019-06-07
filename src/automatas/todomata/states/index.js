@@ -1,9 +1,9 @@
-import init from './init'
-import idle from './idle'
-import checking from './checking'
-import removing from './removing'
-import creating from './creating'
-import editing from './editing'
+import init from './initState'
+import idle from './idleState'
+import checking from './checkingState'
+import removing from './removingState'
+import creating from './creatingState'
+import editing from './editingState'
 
 let states = [init, idle, checking, removing, editing, creating]
 

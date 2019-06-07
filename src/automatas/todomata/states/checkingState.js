@@ -1,7 +1,7 @@
 import Appomata from 'Appomata'
 
-let editing = {
-	name : "editing",
+let checking = {
+	name : "checking",
 	actions: {
 		confirm: async (delta) => {
 			let {
@@ -10,15 +10,15 @@ let editing = {
 				buffer
 			} = delta;
 			let task = context.all[buffer.keys[input.task.id]];
-			let {title} = task;
-			Object.assign(task, {title})
+			task.completed = true;
 			task.status = "idle";
 			return Appomata.createOmega(
 				"idle",
-				task
+				{task, tasks: context.all}
 			)
-		}	
+		}
+		
 	}
 }
 
-export default Appomata.createState(editing); 
+export default Appomata.createState(checking);

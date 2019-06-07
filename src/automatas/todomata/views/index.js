@@ -1,10 +1,11 @@
-import idle from './idle'
-import checking from './checking'
-// import removing from './removing'
-// import creating from './creating'
-// import editing from './editing'
+import idle from './idleView'
+import checking from './checkingView'
+import removing from './removingView'
+// import creating from './creatingView'
+// import editing from './editingView'
 
-let views = [idle, checking]
+//let views = [idle, checking, removing, creating, editing]
+let views = [idle, checking, removing]
 
 export default views;
  

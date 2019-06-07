@@ -15,7 +15,7 @@ let creating = {
 			task.status = "idle";
 			return Appomata.createOmega(
 				"idle",
-				task
+				{task, tasks: context.all}
 			)
 		}	
 	}
