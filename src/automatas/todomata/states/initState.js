@@ -19,6 +19,7 @@ let init = {
             });
 
             // 3 - write in memory
+			
             context.all = tasks;
 
             // 4 - make the omega transition data

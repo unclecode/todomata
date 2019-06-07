@@ -9,12 +9,18 @@ let creating = {
 				context,
 				buffer
 			} = delta;
-			input.task.id = context.all.length
-			context.all.push(input.task)
-			buffer.keys[input.task.id] = context.all.length - 1
-			task.status = "idle";
+			let task = {
+				id : -1,
+				title: "untitled",
+				completed: false,
+				status: "editing"
+			}
+			task.id = context.all.length
+			context.all.push(task)
+			buffer.keys[task.id] = context.all.length - 1
+			task.status = "editing";
 			return Appomata.createOmega(
-				"idle",
+				"editing",
 				{task, tasks: context.all}
 			)
 		}	

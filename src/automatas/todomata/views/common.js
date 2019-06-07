@@ -29,11 +29,10 @@ let Task = ({data, props, transit}) => {
 			onclick: (e) => { 
 				transit(Appomata.createDelta("edit", {task}))
 				return false;
-
 		}
 		}, ['edit']),
 	])
-	vNodes.splice(1, task.completed ? 1 : 0)
+	vNodes.children.splice(1, task.completed ? 1 : 0)
 	return vNodes;
 }
 export {

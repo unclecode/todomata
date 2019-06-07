@@ -12,7 +12,14 @@ let todomata = Appomata.createAutomata({
         keys: {},
         url: {
             all: `https://jsonplaceholder.typicode.com/todos`
-        }
+        },
+		buildIndex : (items, key = "id") => {
+			let index = {}
+			items.forEach((x, order) => {
+				index[x[key]] = order
+			})
+			return index
+		}
     } 
 })
 

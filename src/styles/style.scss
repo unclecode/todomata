@@ -56,6 +56,23 @@ ul.tasks {
     }
 }
 
+a.create {
+display: grid;
+    display: grid;
+    padding: 0 2.53rem;
+    grid-auto-flow: column;
+    justify-content: start;
+    text-decoration: none;
+    grid-gap: 1rem;
+    align-items: center;
+    min-height: 22px;
+	&:before{
+		content: " 🍔 ";
+		align-self: end;
+		
+	}
+}
+
 @keyframes hue {
     from {
         filter: hue-rotate(0deg);

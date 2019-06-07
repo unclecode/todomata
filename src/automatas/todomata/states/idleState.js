@@ -37,12 +37,22 @@ let idle = {
 				buffer, 
 				context
 			} = delta;
-			let task = input.task
-			task.status = "creating"
-			return Appomata.createOmega("creating", {
-				task: input.task,
-				tasks: context.all
-			})			
+
+			let task = {
+				id : -1,
+				title: "untitled",
+				completed: false,
+				status: "editing"
+			}
+			task.id = context.all.length
+			context.all.unshift(task)
+
+			buffer.keys = buffer.buildIndex(context.all, "id")
+
+			return Appomata.createOmega(
+				"editing",
+				{task, tasks: context.all}
+			)
 		},
 		edit : async (delta) => {
 			// 1 - get delta info
@@ -51,7 +61,7 @@ let idle = {
 				buffer, 
 				context
 			} = delta;
-			let task = input.task
+			let task = context.all[buffer.keys[input.task.id]]
 			task.status = "editing"
 			return Appomata.createOmega("editing", {
 				task: input.task,
